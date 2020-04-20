@@ -36,8 +36,9 @@ public class UserService {
 		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
 	}
 	
-	
-	
-	
+	public void delete(String id) {
+		findById(id); // faz a busca, senão existir já lança a exceção
+		repo.deleteById(id);
+	}
 	
 }
