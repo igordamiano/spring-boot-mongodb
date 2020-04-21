@@ -1,5 +1,6 @@
 package com.igor.springbootmongo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class PostService {
 
 	 	// vai dar um get no Post, se não tiver, vai lançar a exceção
 	 	return obj.orElseThrow(() -> new ObjectNotFoundException(id));
+	}
+	
+	public List<Post> findByTitle(String text){
+		return repo.findByTitleContainingIgnoreCase(text);
 	}
 	
 }
